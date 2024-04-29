@@ -5,6 +5,7 @@ import com.abhilash.movies.repository.MovieRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MovieService {
@@ -17,5 +18,9 @@ public class MovieService {
 
     public List<Movie> findAllMovies(){
         return movieRepo.findAll();
+    }
+
+    public Optional<Movie> findByTitle(String title) {
+        return movieRepo.findByTitle(title);
     }
 }
