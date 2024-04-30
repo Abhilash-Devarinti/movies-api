@@ -23,4 +23,8 @@ public class MovieService {
     public Optional<Movie> findByTitle(String title) {
         return movieRepo.findByTitle(title);
     }
+
+    public void saveMovie(Movie movie) {
+        movieRepo.save(movie);
+    }
 }
