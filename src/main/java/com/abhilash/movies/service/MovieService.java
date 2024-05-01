@@ -27,4 +27,8 @@ public class MovieService {
     public void saveMovie(Movie movie) {
         movieRepo.save(movie);
     }
+
+    public Optional<Movie> findByImdbId(String imdbId) {
+        return movieRepo.findByImdbId(imdbId);
+    }
 }

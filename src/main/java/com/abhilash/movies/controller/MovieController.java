@@ -29,7 +29,18 @@ public class MovieController {
        return new ResponseEntity<>(service.findAllMovies(), HttpStatus.OK);
     }
 
-    @GetMapping("/{title}")
+    @GetMapping("/imdb/{imdbId}")
+    public ResponseEntity<?> getSingleMovieByImdbId(@PathVariable String imdbId){
+        Optional<Movie> movie = service.findByImdbId(imdbId);
+
+        if(movie.isPresent()) {
+            return ResponseEntity.ok(movie);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Movie Not Found");
+        }
+    }
+
+    @GetMapping("/title/{title}")
     public ResponseEntity<?> getTrailerLinkByTitle(@PathVariable String title) {
         Optional<Movie> movie = service.findByTitle(title);
 
